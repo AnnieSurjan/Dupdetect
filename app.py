@@ -1,4 +1,4 @@
-import os
+import os  # 🔹 Ez a sor kell, hogy működjön az os.getenv()
 
 # Környezeti változók beolvasása
 client_id = os.getenv("QB_CLIENT_ID")
@@ -9,3 +9,4 @@ access_token = os.getenv("QB_ACCESS_TOKEN")
 print("Client ID:", client_id)
 print("Client Secret:", client_secret)
 print("Access Token:", access_token)
+
