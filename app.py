@@ -1,12 +1,24 @@
-import os  # 🔹 Ez a sor kell, hogy működjön az os.getenv()
+from flask import Flask
+import os
 
-# Környezeti változók beolvasása
+app = Flask(__name__)
+
+# Beolvassuk a környezeti változókat
 client_id = os.getenv("QB_CLIENT_ID")
 client_secret = os.getenv("QB_CLIENT_SECRET")
 access_token = os.getenv("QB_ACCESS_TOKEN")
 
-# Ellenőrzés: kiírjuk, hogy sikerült-e beolvasni
-print("Client ID:", client_id)
-print("Client Secret:", client_secret)
-print("Access Token:", access_token)
+@app.route("/")
+def home():
+    return f"""
+    <h2>QuickBooks API teszt</h2>
+    <p>Client ID: {client_id}</p>
+    <p>Client Secret: {client_secret}</p>
+    <p>Access Token: {access_token}</p>
+    """
+
+# Ezt a részt Render nem használja, de lokális teszthez jó
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
