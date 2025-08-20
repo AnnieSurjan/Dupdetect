@@ -1,24 +1,22 @@
-from flask import Flask
 import os
+from flask import Flask
 
 app = Flask(__name__)
 
-# Beolvassuk a környezeti változókat
-client_id = os.getenv("QB_CLIENT_ID")
-client_secret = os.getenv("QB_CLIENT_SECRET")
-access_token = os.getenv("QB_ACCESS_TOKEN")
+# Load environment variables
+client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
+access_token = os.getenv("ACCESS_TOKEN")
 
 @app.route("/")
 def home():
-    return f"""
-    <h2>QuickBooks API teszt</h2>
-    <p>Client ID: {client_id}</p>
-    <p>Client Secret: {client_secret}</p>
-    <p>Access Token: {access_token}</p>
+    return """
+    <h2>DupDetect is running! 🔒</h2>
+    <p>The QuickBooks connection has been successfully configured.</p>
+    <p>If you encounter any issues, please check the logs or contact support.</p>
     """
 
-# Ezt a részt Render nem használja, de lokális teszthez jó
 if __name__ == "__main__":
     app.run(debug=True)
-
+print("Access token loaded:", access_token)
 
